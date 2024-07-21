@@ -40,10 +40,13 @@ jobs:
       uses: azure/setup-kubectl@v1
       with:
         version: v1.19.0
+        
+    - name: Set up KUBECONFIG
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
     - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
       run: |
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
