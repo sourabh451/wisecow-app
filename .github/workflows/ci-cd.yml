@@ -28,3 +28,21 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: sourabhapatil24/wisecow:latest
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v1
+      with:
+        version: v1.19.0
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
+        kubectl get svc
