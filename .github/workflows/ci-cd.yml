@@ -45,7 +45,7 @@ jobs:
 
     - name: Start Minikube
       run: |
-        sudo minikube start --driver=none
+        minikube start
 
     - name: Set up kubectl
       uses: azure/setup-kubectl@v1
