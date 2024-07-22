@@ -61,4 +61,4 @@ jobs:
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
         kubectl get svc
-        curl http://192.168.49.2:31719
+        kubectl get pods -w
