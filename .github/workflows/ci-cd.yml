@@ -36,29 +36,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Minikube
-      run: |
-        curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        chmod +x minikube
-        sudo mv minikube /usr/local/bin/
-        minikube version
-
-    - name: Start Minikube
-      run: |
-        minikube start
-
     - name: Set up kubectl
       uses: azure/setup-kubectl@v1
       with:
         version: v1.19.0
 
-    - name: Configure kubectl to use Minikube context
+    - name: Set up Kubeconfig
       run: |
-        kubectl config use-context minikube
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+        cat $HOME/.kube/config  # Optional: This line is for debugging purposes to see the kubeconfig content
 
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
         kubectl get svc
-        kubectl get pods -w
+        minikube service wisecow-service
