@@ -41,10 +41,10 @@ jobs:
       with:
         version: v1.19.0
         
-    - name: Configure Kubeconfig
+    - name: Set up Kubeconfig
       run: |
-        echo "${{ secrets.KUBECONFIG }}" > kubeconfig
-        export KUBECONFIG=kubeconfig
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
     - name: Deploy to Kubernetes
       run: |
