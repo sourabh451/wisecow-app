@@ -62,3 +62,4 @@ jobs:
         kubectl apply -f service.yaml
         kubectl get svc
         minikube service wisecow-service
+        curl http://192.168.49.2:31719
