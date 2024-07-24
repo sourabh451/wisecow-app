@@ -43,6 +43,6 @@ jobs:
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
         cd ~
         ls -a
-        cat .config
+        cd .config
         cd kubectl
         ls -a
