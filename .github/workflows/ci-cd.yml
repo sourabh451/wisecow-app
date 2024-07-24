@@ -27,22 +27,5 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: sourabhapatil24/wisecow:latest
+        tags: sourabhapatil24/wisecow:${{ steps.build_number.outputs.BUILD_NUMBER }}
         
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Deploy to Kubernetes
-      run: |
-        cd ~
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-        cd ~
-        ls -a
-        cd .config
-        cd kubectl
-        ls -a
