@@ -27,5 +27,5 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: sourabhapatil24/wisecow:${{ steps.build_number.outputs.BUILD_NUMBER }}
+        tags: sourabhapatil24/wisecow:0
         
