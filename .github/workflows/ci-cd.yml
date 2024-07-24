@@ -36,5 +36,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: start minikube
-      uses: medyagh/setup-minikube@latest
+    - name: Kubectl tool installer
+      uses: Azure/setup-kubectl@v4.0.0
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
