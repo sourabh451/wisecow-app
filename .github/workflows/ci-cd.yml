@@ -41,4 +41,5 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
+        cd ~
         ls -a
