@@ -27,7 +27,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: sourabhapatil24/wisecow:latest
+        tags: sourabhapatil24/wisecow:${{ steps.build_number.outputs.BUILD_NUMBER }}
         
   deploy:
     needs: build
@@ -36,20 +36,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v1
-      with:
-        version: v1.19.0
-
-    - name: Set up Kubeconfig
-      run: |
-        mkdir -p $HOME/.kube
-        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
-        cat $HOME/.kube/config  # Optional: This line is for debugging purposes to see the kubeconfig content
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f deployment.yaml
-        kubectl apply -f service.yaml
-        kubectl get svc
-        minikube service wisecow-service
+    - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@latest
