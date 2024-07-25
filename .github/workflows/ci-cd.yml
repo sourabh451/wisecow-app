@@ -52,8 +52,8 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-        git add -A
-        git commit -am "Update deployment image to version ${{ github.run_number }}" 
-        git push https://x-access-token:${{ GH_PAT }}@github.com/sourabh451/wisecow-app.git master
+          git add -A
+          git commit -am "Update deployment image to version ${{ github.run_number }}" 
+          git push https://x-access-token:${{ GH_PAT }}@github.com/sourabh451/wisecow-app.git master
           
         
