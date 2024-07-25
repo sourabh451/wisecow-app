@@ -45,9 +45,6 @@ jobs:
           git config --global user.email "er.sourabhapatil@gmail.com"
           git config --global user.name "Sourabha Patil"
           sed -i "s/${{ env.APP_NAME }}.*/${{ env.APP_NAME }}:${{ github.run_number }}/g"  deployment.yaml
-          git add -A
-          git commit -am "Update deployment image to version ${{ github.run_number }}"
-          git push origin master
       - name: Commit and Push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
