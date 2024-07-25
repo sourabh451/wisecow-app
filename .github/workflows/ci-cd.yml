@@ -41,6 +41,8 @@ jobs:
           repository: sourabh451/wisecow-app
           ref: 'master'
       - name: setup git config
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.email "er.sourabhapatil@gmail.com"
           git config --global user.name "Sourabha Patil"
