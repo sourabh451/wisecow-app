@@ -12,10 +12,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Set up build number
-      run: |
-        echo "BUILD_NUMBER=${{ GITHUB_RUN_NUMBER }}" >> $GITHUB_ENV
-        echo "Build number is ${{ BUILD_NUMBER }}"
+    - name: Output Run ID
+      run: echo ${{ github.run_id }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
