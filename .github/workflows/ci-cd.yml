@@ -41,14 +41,12 @@ jobs:
           repository: sourabh451/wisecow-app
           ref: 'master'
       - name: setup git config
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.email "er.sourabhapatil@gmail.com"
           git config --global user.name "Sourabha Patil"
           sed -i "s/${{ env.APP_NAME }}.*/${{ env.APP_NAME }}:${{ github.run_number }}/g"  deployment.yaml
-      - name: Commit and Push changes
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
           git add -A
           git commit -am "Update deployment image to version ${{ github.run_number }}" 
           git push https://x-access-token:${{ GH_PAT }}@github.com/sourabh451/wisecow-app.git master
