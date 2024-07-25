@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  APP_NAME: wisecow-app
+  APP_NAME: wisecow
 
 jobs:
   build:
