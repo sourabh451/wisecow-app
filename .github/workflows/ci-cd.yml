@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  APP_NAME: wisecow
+  APP_NAME: sourabhapatil24/wisecow
 
 jobs:
   build:
