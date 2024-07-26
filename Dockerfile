@@ -11,6 +11,8 @@ COPY . /app
 RUN apt-get update && apt-get install -y fortune-mod cowsay
 RUN pip install flask
 
+RUN chmod +x wisecow.sh
+
 # Make port 4499 available to the world outside this container
 EXPOSE 4499
 
