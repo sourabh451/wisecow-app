@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.email "er.sourabhapatil@gmail.com"
           git config --global user.name "Sourabha Patil"
-          sed -i "s/${{ env.APP_NAME }}.*/${{ env.APP_NAME }}:${{ github.run_number }}/g"  deployment.yaml
+          sed -i "s/${{ env.APP_NAME }}.*/${{ env.APP_NAME }}:${{ github.run_number }}/g"  app-manifest/deployment.yaml
           git add -A
           git commit -am "Update deployment image to version ${{ github.run_number }}" 
       - name: Push changes
