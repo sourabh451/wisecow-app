@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  APP_NAME: sourabhapatil24/wisecow
+  APP_NAME: wisecow-cicd
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: sourabhapatil24/wisecow:${{ github.run_number }}
+        tags: sourabhapatil24/wisecow-cicd:${{ github.run_number }}
         
   update-manifest-stage:
     runs-on: ubuntu-latest
