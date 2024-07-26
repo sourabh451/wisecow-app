@@ -38,8 +38,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: sourabh451/wisecow-app
+          repository: sourabh451/GitOps-wisecow-app
           ref: 'master'
+          token: ${{ secrets.GH_PAT }}
       - name: setup git config
         run: |
           git config --global user.email "er.sourabhapatil@gmail.com"
@@ -53,6 +54,6 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          git push https://${GH_PAT}@github.com/sourabh451/wisecow-app HEAD:master
+          git push https://${GH_PAT}@github.com/sourabh451/GitOps-wisecow-app HEAD:master
           
         
