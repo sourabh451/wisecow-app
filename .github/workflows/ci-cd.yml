@@ -51,6 +51,6 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          git push https://x-access-token:${{ GH_PAT }}@github.com/sourabh451/wisecow-app HEAD:master
+          git push https://x-access-token:${GH_PAT}@github.com/sourabh451/wisecow-app HEAD:master
           
         
